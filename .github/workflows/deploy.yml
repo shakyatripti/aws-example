@@ -38,7 +38,7 @@ jobs:
           aws lambda update-function-code \
             --function-name ${{ secrets.LAMBDA_FUNCTION_NAME }} \
             --s3-bucket ${{ secrets.AWS_S3_BUCKET }} \
-            --s3-key aws-lambda-example-1.0-SNAPSHOT-lambda-package.zip \
+            --s3-key aws-lambda-example-1.0-SNAPSHOT.jar \
             --region ap-south-1
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
