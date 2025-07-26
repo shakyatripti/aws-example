@@ -12,4 +12,5 @@ public class Course {
     private int id;
     private String name;
     private double price;
+    private String description;
 }
