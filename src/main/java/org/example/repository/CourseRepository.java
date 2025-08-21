@@ -18,7 +18,7 @@ public class CourseRepository {
 
     public void save(Course course) {
         Map<String, AttributeValue> item = new HashMap<>();
-        item.put("id", AttributeValue.builder().n(String.valueOf(course.getId())).build());
+        item.put("id", AttributeValue.builder().s(String.valueOf(course.getId())).build());
         item.put("name", AttributeValue.builder().s(course.getName()).build());
         item.put("price", AttributeValue.builder().n(String.valueOf(course.getPrice())).build());
         item.put("description", AttributeValue.builder().s(course.getDescription()).build());
@@ -46,7 +46,7 @@ public class CourseRepository {
 
     public Optional<Course> findById(int id) {
         Map<String, AttributeValue> key = new HashMap<>();
-        key.put("id", AttributeValue.builder().n(String.valueOf(id)).build());
+        key.put("id", AttributeValue.builder().s(String.valueOf(id)).build());
 
         GetItemRequest request = GetItemRequest.builder()
                 .tableName(tableName)
@@ -67,7 +67,7 @@ public class CourseRepository {
 
     public boolean delete(int id) {
         Map<String, AttributeValue> key = new HashMap<>();
-        key.put("id", AttributeValue.builder().n(String.valueOf(id)).build());
+        key.put("id", AttributeValue.builder().s(String.valueOf(id)).build());
 
         DeleteItemRequest request = DeleteItemRequest.builder()
                 .tableName(tableName)
@@ -80,7 +80,7 @@ public class CourseRepository {
 
     private Course mapToCourse(Map<String, AttributeValue> item) {
         return new Course(
-                Integer.parseInt(item.get("id").n()),
+                Integer.parseInt(item.get("id").s()),
                 item.get("name").s(),
                 Double.parseDouble(item.get("price").n()),
                 item.get("description").s(),
